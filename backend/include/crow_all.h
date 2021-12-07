@@ -8,6 +8,11 @@
 #include <iostream>
 #include <boost/optional.hpp>
 
+/*  
+    DISCLAIMER!
+    This is NOT my code. This is a dependency that was taken from this Github repo: https://github.com/ipkn/crow
+*/
+
 namespace crow
 {
     // ----------------------------------------------------------------------------
