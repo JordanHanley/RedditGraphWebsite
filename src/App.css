@@ -12,6 +12,9 @@ body{
   width: 27%;
   height: 100vh;
   float: left;
+  display: block;
+  align-items: center;
+  justify-content: center;
   /*padding-top: 1.5vh*/
 }
 
@@ -39,6 +42,14 @@ body{
   height: 12vh;
 }
 
+.Buttons{
+  float: left;
+}
+
+.algoButtons{
+  padding-right: 10px;
+}
+
 .submitButton{
   color: white;
   border: 1.5px solid black;
@@ -64,11 +75,18 @@ body{
 }
 
 .graph-nodes{
-  width: 10vh;
-  height: 10vh;
+  width: 7vh;
+  height: 7vh;
   
-  background-color: #2A2929;
-  background-image: "logo";
+  background-color: black;
   color: aliceblue;
+  align-content: center;
+  font-size: small;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+  overflow-wrap: break-word;
+  border-color: #2A2929;
+  border-width: 0.5vh;
   border-radius: 100vh;
 }

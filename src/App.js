@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import ReactFlow from 'react-flow-renderer';
 import './App.css';
-
 import { render } from "react-dom";
 
 import logo from './reddit-logo.png';
@@ -16,34 +15,43 @@ function App() {
   const [To, setTo] = useState("");
   const [From, setFrom] = useState("");
   const [subredditPath, setSubredditPath] = useState([]);
+  const [Type, setType] = useState("");
   function onsubmit(){
-    getSubRedditPath(To, From , "BFS");
+    if(To == "" || From == "") alert("Incorrect subreddit input");
+    else if(Type == "" ) alert("Please select an Algorithm");
+    else getSubRedditPath(To, From , Type);
   }
 
   function getSubRedditPath(To, From, type){
     fetch("http://127.0.0.1:18080/" + type, {
-      "from": From,
-      "to": To,
+    method: 'POST',
+    body: JSON.stringify({"from": From, "to": To}),
+    headers: {
+            'Content-Type': 'text/plain'
+      }
     })
       .then(response => response.json())
-      .then(data => populateSubRedditPaths(data.items));
+      .then(data => populateSubRedditPaths(data));
   }
 
   function populateSubRedditPaths(elements){
-    if(elements.length == 0) alert("Subreddit(s) not found!");
+    if(elements.length <= 1) alert("Subreddit(s) not found!");
     else{
       var allSubreddits = [];
       let id = 1;
-      let posX = 500;
-      let posY = 0;
+      let posX = 0;
+      let posY = 350;
       for(var i = 0; i < elements.length; i++){
-        if(id > 1)
-        posX = id % 2 == 0 ? 400 : 600;
+        if(id > 1){
+          posX += 120;
+          posY = id % 2 == 1 ? Math.abs(((350 - id * 50))) % 600 : (350 % (id * 50));
+        }
+        if(i == elements.length - 1) posY = 350;
         allSubreddits.push({
           id: '' + (id++),
           data: { label: elements[i] },
           position: {x: posX,
-             y: posY + (id-1) * 100},
+             y: posY},
           className: "graph-nodes",
           draggable: true,
           connectable: false,
@@ -61,18 +69,16 @@ function App() {
         });
 
       }
-      console.log(subredditPath);
+      //console.log(subredditPath);
       setSubredditPath(allSubreddits);
       
     }
   }
 
-
-
   return (
     <div className="App">
         <div className="left-panel">
-          <img src={logo} className="r-Logo" />
+          <img src={logo} className="r-Logo" style = {{marginTop: 10}} />
           <font style ={{fontSize:"2.5em", color:"white", fontWeight: 'bold'}}>
             <br />
                 r/connect
@@ -100,17 +106,30 @@ function App() {
                 onChange={(e) => setTo(e.target.value)}
                 style={{marginLeft: 45}}/>
             </div>
-          <button 
-            className="submitButton" 
-            onClick={() => onsubmit()}>
-              Submit
-          </button>
-          <div className="algoButtons">
-            <input type="radio" name="algos" value="1" id="first" />
-            <label for="first">Breath First Search</label>
-            <input type="radio" name="aglos" value="2" id="second" />
-            <label for="second">Dijkstra's Algorithm</label>
-          </div>
+            <br />
+            <div className="algoButtons" style ={{fontSize:"1em"}}>
+             <p style ={{fontSize:"1em", color:"#fff", paddingTop: 5, fontWeight: 'bold'}}>
+              Algorithm Type:
+              </p>
+              <input type="radio" name="algos" value="BFS" id="first" onChange={(e) => setType(e.target.value)}/>
+              <label for="first">Breath First Search</label>
+              <br />
+              <input type="radio" name="algos" value="dijkstra" id="second" onChange={(e) => setType(e.target.value)}/>
+              <label for="second">Dijkstra's Algorithm</label>
+            </div>
+            <br /><br />
+            <div className="Buttons">
+              <button 
+                className="submitButton" 
+                onClick={() => onsubmit()}>
+                  Submit
+              </button>
+              <button onClick={() => window.location.reload()}
+                className="submitButton" >
+                  Clear
+              </button>
+            </div>
+          
           </div>
         </div>
         <div className="right-panel">
