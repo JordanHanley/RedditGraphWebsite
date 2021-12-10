@@ -22,7 +22,7 @@ function App() {
   function onsubmit(){
     if(To == "" || From == "") alert("Incorrect subreddit input");
     else if(Type == "" ) alert("Please select an Algorithm");
-    else populateSubRedditPaths([To, From , Type]);
+    else getSubRedditPath(To, From , Type);
   }
   function onClear(){
     //window.location.reload();
