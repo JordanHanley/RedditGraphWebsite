@@ -4,7 +4,7 @@ body{
   text-align: center;
   margin: 0;
   font-family: 'IBM Plex Sans', sans-serif;
-  /*overflow-y: hidden;*/
+  overflow-y: hidden;
 }
 
 .left-panel{
@@ -35,11 +35,18 @@ body{
 }
 
 .left-panel .r-Logo{
-  border-radius: 1200vh;
-  border: 2vh solid black;
   padding: 0vh;
-  width: 12vh;
-  height: 12vh;
+  width: 14vh;
+  height: 14vh;
+}
+
+.r-Logo{ 
+  border-radius: 0;
+  border: 0vh;
+  padding: 0;
+  width: 2vh;
+  height: 2vh;
+
 }
 
 .Buttons{
@@ -56,6 +63,7 @@ body{
   background-color: #ff4500;
   border-radius: 2vh;
   font-family: inherit;
+  font-size: medium;
   height: 5vh;
   margin-top: 2vh;
   margin-left: 7vh;

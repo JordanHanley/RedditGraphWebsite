@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import ReactFlow from 'react-flow-renderer';
 import './App.css';
 import { render } from "react-dom";
+import Particles from 'react-particles-js';
 
-import logo from './reddit-logo.png';
+
+import logo from './redditlogo.png';
 import redditman from "./reddit-character.png";
 
 // get our fontawesome imports
@@ -16,10 +18,15 @@ function App() {
   const [From, setFrom] = useState("");
   const [subredditPath, setSubredditPath] = useState([]);
   const [Type, setType] = useState("");
+  const [empty, setEmpty] = useState(true);
   function onsubmit(){
     if(To == "" || From == "") alert("Incorrect subreddit input");
     else if(Type == "" ) alert("Please select an Algorithm");
-    else getSubRedditPath(To, From , Type);
+    else populateSubRedditPaths([To, From , Type]);
+  }
+  function onClear(){
+    //window.location.reload();
+    setEmpty(true);
   }
 
   function getSubRedditPath(To, From, type){
@@ -37,6 +44,7 @@ function App() {
   function populateSubRedditPaths(elements){
     if(elements.length <= 1) alert("Subreddit(s) not found!");
     else{
+      setEmpty(false);
       var allSubreddits = [];
       let id = 1;
       let posX = 0;
@@ -69,12 +77,11 @@ function App() {
         });
 
       }
-      //console.log(subredditPath);
       setSubredditPath(allSubreddits);
       
     }
   }
-
+  
   return (
     <div className="App">
         <div className="left-panel">
@@ -124,8 +131,8 @@ function App() {
                 onClick={() => onsubmit()}>
                   Submit
               </button>
-              <button onClick={() => window.location.reload()}
-                className="submitButton" >
+              <button onClick={() => onClear()}
+                className="submitButton">
                   Clear
               </button>
             </div>
@@ -133,12 +140,29 @@ function App() {
           </div>
         </div>
         <div className="right-panel">
-            <ReactFlow elements={subredditPath} />
+          {empty ? (
+              <Particles
+              params={{
+                particles: {
+                  number: {
+                    value: 200,
+                    density: {
+                      enable: true,
+                    }
+                  },
+                  color: {
+                    value: '#0000ff',
+                  },
+                },
+              }}
+            />
+          ) : (
+          <ReactFlow elements={subredditPath} />
+            )}
         </div>
     </div>
   );
 }
-
 //<img src={redditman} className="r-Logo" />
 
 export default App;
