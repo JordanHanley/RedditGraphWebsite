@@ -9,6 +9,9 @@ and Dijkstra's Algorithm. This project is built on a C++ backend with a React Fr
 Breadth for Search: Fast, but does not consider how connnected the two sub-reddits are; Naive approach
 Dijkstra: Slow, but takes into account how connected 2 sub-reddits are to each other by taking into account the nummber of links between each other.
 
-      
+Website Rendered:
+![image](https://user-images.githubusercontent.com/57771060/145512043-f748ee72-803a-44c0-a0e7-3dd8a5060bef.png)
+![image](https://user-images.githubusercontent.com/57771060/145512024-8ed3ddd5-47a5-42ec-b849-134a4769a882.png)
+
 
 
