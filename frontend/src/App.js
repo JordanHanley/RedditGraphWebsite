@@ -25,7 +25,8 @@ function App() {
     else getSubRedditPath(To, From , Type);
   }
   function onClear(){
-    //window.location.reload();
+    setFrom("");
+    setTo("");
     setEmpty(true);
   }
 
