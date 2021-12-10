@@ -14,4 +14,5 @@ Website Rendered:
 ![image](https://user-images.githubusercontent.com/57771060/145512024-8ed3ddd5-47a5-42ec-b849-134a4769a882.png)
 
 
-
+Launch Instructions:
+In order to use R "Slash" Connect, please visit the README's inside both the frontend and backend folders to launch the respective frontend and backend applications of the website.
