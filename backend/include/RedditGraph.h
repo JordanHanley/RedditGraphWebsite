@@ -34,4 +34,5 @@ public:
     void readFromFile(string fileName);
     vector<string> getBFSPathFromTo(string from, string to);
     vector<string> getDijkstrasPathFromTo(string from, string to);
+    bool keyExists(string key);
 };
