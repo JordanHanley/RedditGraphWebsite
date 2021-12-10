@@ -14,8 +14,8 @@ int main()
 
 	crow::SimpleApp app;
 
-	CROW_ROUTE(app, "/bfs")
-		.methods("GET"_method)
+	CROW_ROUTE(app, "/BFS")
+		.methods("POST"_method)
 		([&](const crow::request& req) {
 		auto x = crow::json::load(req.body);
 		if (!x)
@@ -25,11 +25,13 @@ int main()
 		vector<string> path = graph.getBFSPathFromTo(from, to);
 		crow::json::wvalue y;
 		y = path;
-		return crow::response(y);
+		auto res = crow::response(y);
+		res.add_header("Access-Control-Allow-Origin", "*");
+		return res;
 			});
 
 	CROW_ROUTE(app, "/dijkstra")
-		.methods("GET"_method)
+		.methods("POST"_method)
 		([&](const crow::request& req) {
 		auto x = crow::json::load(req.body);
 		if (!x)
@@ -39,7 +41,9 @@ int main()
 		vector<string> path = graph.getDijkstrasPathFromTo(from, to);
 		crow::json::wvalue y;
 		y = path;
-		return crow::response(y);
+		auto res = crow::response(y);
+		res.add_header("Access-Control-Allow-Origin", "*");
+		return res;
 			});
 
 	app.port(18080).multithreaded().run();
