@@ -1,0 +1,105 @@
+
+body{
+  background-color: black;
+  text-align: center;
+  margin: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  overflow-y: hidden;
+}
+
+.left-panel{
+  background-color: black;
+  width: 27%;
+  height: 100vh;
+  float: left;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  /*padding-top: 1.5vh*/
+}
+
+.subSearch{
+  border: 1.5px solid black;
+  background-color: #2A2929;
+  color: white;
+  border-radius: 2vh;
+  font-family: inherit;
+  font-size: 1.2rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.bottom{
+  background-image: linear-gradient(#ff4500);
+  width: 100%;
+  height: 80vh;
+}
+
+.left-panel .r-Logo{
+  padding: 0vh;
+  width: 14vh;
+  height: 14vh;
+}
+
+.r-Logo{ 
+  border-radius: 0;
+  border: 0vh;
+  padding: 0;
+  width: 2vh;
+  height: 2vh;
+
+}
+
+.Buttons{
+  float: left;
+}
+
+.algoButtons{
+  padding-right: 10px;
+}
+
+.submitButton{
+  color: white;
+  border: 1.5px solid black;
+  background-color: #ff4500;
+  border-radius: 2vh;
+  font-family: inherit;
+  font-size: medium;
+  height: 5vh;
+  margin-top: 2vh;
+  margin-left: 7vh;
+  width: 12vh;
+}
+
+
+.right-panel{
+  background-color: black;
+  width: 73%;
+  height: 100vh;
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*padding-top: 1.5vh*/
+}
+
+.graph-nodes{
+  width: 7vh;
+  height: 7vh;
+  
+  background-color: black;
+  color: aliceblue;
+  align-content: center;
+  font-size: small;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+  overflow-wrap: break-word;
+  border-color: #2A2929;
+  border-width: 0.5vh;
+  border-radius: 100vh;
+}
+
+.Particles{
+  width: 100%;
+  height: 100%;
+}
