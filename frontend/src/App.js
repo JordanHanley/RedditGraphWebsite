@@ -142,6 +142,8 @@ function App() {
         <div className="right-panel">
           {empty ? (
               <Particles
+              width='74vw'
+              height='100vw'
               params={{
                 particles: {
                   number: {
