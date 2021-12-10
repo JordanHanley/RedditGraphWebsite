@@ -73,6 +73,10 @@ RedditGraph::Node* RedditGraph::BFSHelper(string from, string to, vector<Node*>&
 }
 
 vector<string> RedditGraph::getBFSPathFromTo(string from, string to) {
+    // If one of the keys doesn't exist then return empty vector
+    if (!keyExists(from) || !keyExists(to)) {
+        return vector<string>();
+    }
     // Making a vector to hold all the dynamically allocated nodes, so that they can be deallocated at the end of the function
     vector<Node*> allocatedNodes;
     // Set to keep track of accessed nodes
@@ -92,10 +96,13 @@ vector<string> RedditGraph::getBFSPathFromTo(string from, string to) {
 }
 
 vector<string> RedditGraph::getDijkstrasPathFromTo(string from, string to) {
+    // If one of the keys doesn't exist then return empty vector
+    if (!keyExists(from) || !keyExists(to)) {
+        return vector<string>();
+    }
     set<int> notVisited;
     vector<int> dist;
     vector<int> predecessor;
-
     // Set up the notVisited map
     for (int i = 0; i < indexToKey.size(); i++) {
         notVisited.insert(i);
@@ -146,3 +153,6 @@ vector<string> RedditGraph::getDijkstrasPathFromTo(string from, string to) {
     return path;
 }
 
+bool RedditGraph::keyExists(string key) {
+    return (keyToIndex.find(key) != keyToIndex.end());
+}
